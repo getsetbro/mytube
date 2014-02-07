@@ -36,7 +36,7 @@
 <body>
     <p id="hdr"><a href="//getsetbro.com/mytube">mytube</a> | 
     <a href="//github.com/getsetbro/mytube">github</a> | 
-    bookmarklet: <a href="javascript:void(location.href='//getsetbro.com/mytube/?'+location.search)">mytube</a>
+    bookmarklet: <a href="javascript:void(location.href='//getsetbro.com/mytube/'+location.search)">mytube</a>
     </p>
     <div id="mt">
       <h1>mytube</h1>
@@ -48,9 +48,7 @@
     </div>
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript">
-    var gtVid, 
-        wls = window.location.search.split('?')[1], 
-        gotVid;
+    var gtVid, wls = window.location.search.substring(1), gotVid;
 
     gtVid = function(vid) {
         var i, pr, qry, vrs;
