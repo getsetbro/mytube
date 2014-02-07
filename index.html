@@ -48,7 +48,9 @@
     </div>
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript">
-    var gtVid, wls = window.location.search.substring(1), gotVid;
+    var gtVid, 
+        wls = window.location.search.split('?')[1], 
+        gotVid;
 
     gtVid = function(vid) {
         var i, pr, qry, vrs;
