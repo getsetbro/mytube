@@ -27,7 +27,7 @@
         margin: 8px 0;
     }
     #mt {
-        height: calc(100% - 30px);
+        height: calc(100% - 50px);
         background-color: #000;
     }
     </style>
@@ -41,10 +41,12 @@
     <div id="mt">
       <h1>mytube</h1>
       <p>mytube is a page that just plays the video you want to see <br/> at the width and height that you set your brower.</p>
-      <p>You can paste </p>
       <a href="//getsetbro.com/mytube/#http://www.youtube.com/watch?v=4oiLfTnrC40">Example</a>
+      <p>Or you can paste the url to the youtube video at the end of this pages url and go.</p>
+      Such as:
+      <p>http://getsetbro.com/mytube/#http://www.youtube.com/watch?v=4oiLfTnrC40</p>
     </div>
-    <script src="//code.jquery.com/jquery-latest.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript">
     var gtVid, wlh = window.location.hash;
 
@@ -65,6 +67,9 @@
     if(wlh){
       var yt = '<iframe width="99" height="99" src="//www.youtube.com/embed/' + gtVid('v') + '" frameborder="0" allowfullscreen></iframe>';
       $('#mt').html(yt);
+    }else{
+      window.location.hash = 's';
+      window.location.hash = '';
     }
     </script>
 </body>
