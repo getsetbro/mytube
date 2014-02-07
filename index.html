@@ -19,46 +19,51 @@
         font-family: sans-serif;
         text-align: center;
     }
-    body, a{
-      color: #999;
+    body, a {
+        color: #999;
     }
-    #hdr{
-      margin: 8px 0;
+    #hdr {
+        margin: 8px 0;
     }
-    #mt{
-      height: calc(100% - 30px);
+    #mt {
+        height: calc(100% - 30px);
     }
     </style>
 </head>
 
 <body>
-  <p id="hdr">mytube | <a href="//github.com/getsetbro/mytube">github</a> | 
-  bookmarklet: <a href="javascript:void(location.href='//getsetbro.com/mytube/index.html#'+location.href)">mytube</a>
-  </p>
-  <div id="mt"></div>
+    <p id="hdr">mytube | 
+    <a href="//github.com/getsetbro/mytube">github</a> | 
+    bookmarklet: <a href="javascript:void(location.href='//getsetbro.com/mytube/index.html#'+location.href)">mytube</a>
+    </p>
+    <div id="mt">
+      <h1>mytube</h1>
+      <p>my settings</p>
+    </div>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript">
-var gtVid;
+    var gtVid;
 
-gtVid = function(vid) {
-  var i, pr, qry, vrs;
-  qry = window.location.hash.substring(1);
-  vrs = qry.split("&");
-  i = 0;
-  while (i < vrs.length) {
-    pr = vrs[i].split("=");
-    if (pr[0] === vid) {
-      return pr[1];
+    gtVid = function(vid) {
+        var i, pr, qry, vrs;
+        qry = window.location.hash.split('?')[1];
+        vrs = qry.split("&");
+        i = 0;
+        while (i < vrs.length) {
+            pr = vrs[i].split("=");
+            if (pr[0] === vid) {
+                return pr[1];
+            }
+            i++;
+        }
+        return false;
+    };
+
+    var id = gtVid('v');
+    if (id) {
+        var yt = '<iframe width="99" height="99" src="//www.youtube.com/embed/' + id + '" frameborder="0" allowfullscreen></iframe>';
+        $('#mt').append(yt);
     }
-    i++;
-  }
-  return false;
-};
-
-    var id = gtVid('v') || '4oiLfTnrC40';
-    var yt = '<iframe width="560" height="315" src="//www.youtube.com/embed/' + id + '" frameborder="0" allowfullscreen></iframe>';
-    $('#mt').append(yt);
-
     </script>
 </body>
 
