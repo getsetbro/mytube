@@ -36,24 +36,23 @@
 <body>
     <p id="hdr"><a href="//getsetbro.com/mytube">mytube</a> | 
     <a href="//github.com/getsetbro/mytube">github</a> | 
-    bookmarklet: <a href="javascript:void(location.href='//getsetbro.com/mytube/%23'+location.href)">mytube</a>
+    bookmarklet: <a href="javascript:void(location.href='//getsetbro.com/mytube/?'+location.search)">mytube</a>
     </p>
     <div id="mt">
       <h1>mytube</h1>
       <p>mytube is a page that just plays the video you want to see <br/> at the width and height that you set your brower.</p>
-      <a href="//getsetbro.com/mytube/#http://www.youtube.com/watch?v=4oiLfTnrC40">Example</a>
+      <a href="//getsetbro.com/mytube/?v=4oiLfTnrC40">Example</a>
       <p>Or you can paste the url to the youtube video at the end of this pages url and go.</p>
       Such as:
-      <p>http://getsetbro.com/mytube/#http://www.youtube.com/watch?v=4oiLfTnrC40</p>
+      <p>http://getsetbro.com/mytube/?v=4oiLfTnrC40</p>
     </div>
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript">
-    var gtVid, wlh = window.location.hash;
+    var gtVid, wls = window.location.search.substring(1), gotVid;
 
     gtVid = function(vid) {
         var i, pr, qry, vrs;
-        qry = wlh.split('?')[1];
-        vrs = qry.split("&");
+        vrs = wls.split("&");
         i = 0;
         while (i < vrs.length) {
             pr = vrs[i].split("=");
@@ -64,11 +63,10 @@
         }
         return false;
     };
-    if(wlh){
-      var yt = '<iframe width="99" height="99" src="//www.youtube.com/embed/' + gtVid('v') + '" frameborder="0" allowfullscreen></iframe>';
+    gotVid = gtVid('v');
+    if(gotVid){
+      var yt = '<iframe width="99" height="99" src="//www.youtube.com/embed/' + gotVid + '?rel=0" frameborder="0" allowfullscreen></iframe>';
       $('#mt').html(yt);
-    }else{
-
     }
     </script>
 </body>
