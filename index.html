@@ -1,52 +1,65 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
+<head>
     <meta charset='utf-8' />
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
     <meta name="description" content="mytube : youtube my way" />
-
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
     <title>mytube</title>
-  </head>
+    <style type="text/css">
+    html, body, iframe {
+        width:100%;
+        height:100%;
+        margin:0;
+    }
+    body {
+        box-sizing:border-box;
+        padding:1px 15px 15px;
+        background-color: #444;
+        font-family: sans-serif;
+        text-align: center;
+    }
+    body, a{
+      color: #999;
+    }
+    #hdr{
+      margin: 8px 0;
+    }
+    #mt{
+      height: calc(100% - 30px);
+    }
+    </style>
+</head>
 
-  <body>
+<body>
+  <p id="hdr">mytube | <a href="//github.com/getsetbro/mytube">github</a> | 
+  bookmarklet: <a href="javascript:void(location.href='//getsetbro.com/mytube/index.html#'+location.href)">mytube</a>
+  </p>
+  <div id="mt"></div>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript">
+var gtVid;
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/getsetbro/mytube">View on GitHub</a>
+gtVid = function(vid) {
+  var i, pr, qry, vrs;
+  qry = window.location.hash.substring(1);
+  vrs = qry.split("&");
+  i = 0;
+  while (i < vrs.length) {
+    pr = vrs[i].split("=");
+    if (pr[0] === vid) {
+      return pr[1];
+    }
+    i++;
+  }
+  return false;
+};
 
-          <h1 id="project_title">mytube</h1>
-          <h2 id="project_tagline">youtube my way</h2>
+    var id = gtVid('v') || '4oiLfTnrC40';
+    var yt = '<iframe width="560" height="315" src="//www.youtube.com/embed/' + id + '" frameborder="0" allowfullscreen></iframe>';
+    $('#mt').append(yt);
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/getsetbro/mytube/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/getsetbro/mytube/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
+    </script>
+</body>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h1>
-<a name="mytube" class="anchor" href="#mytube"><span class="octicon octicon-link"></span></a>mytube</h1>
-
-<hr><p>youtube my way</p>
-      </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">mytube maintained by <a href="https://github.com/getsetbro">getsetbro</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
-    
-
-  </body>
 </html>
